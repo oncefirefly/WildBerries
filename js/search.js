@@ -1,7 +1,6 @@
 const search = () => {
   const input = document.querySelector(".search-block > input");
   const searchBtn = document.querySelector(".search-block > button");
-  // const viewAllBtn = document.querySelector(".more");
 
   const renderGoods = (goods) => {
     const goodsContainer = document.querySelector(".long-goods-list");
@@ -9,7 +8,6 @@ const search = () => {
     goodsContainer.innerHTML = "";
 
     goods.forEach((good) => {
-      // console.log(good);
       const goodBlock = document.createElement("div");
 
       goodBlock.classList.add("col-lg-3");
@@ -35,7 +33,6 @@ const search = () => {
 
       goodsContainer.append(goodBlock);
 
-      //   console.log(goodBlock);
     });
   };
 
@@ -47,16 +44,6 @@ const search = () => {
           good.name.toLowerCase().includes(value.toLowerCase())
         );
 
-        // console.log(value);
-
-        // if (category) {
-        //     console.log('yah');
-        // } else {
-        //     console.log('nah');
-        // }
-
-        // category ? console.log('yah') : console.log('nah');
-
         localStorage.setItem("goods", JSON.stringify(array));
 
         if (window.location.pathname !== "/goods.html") {
@@ -64,30 +51,12 @@ const search = () => {
         } else {
           renderGoods(array);
         }
-
-        // console.log(window.location);
       });
   };
-
-  // input.addEventListener('input', (event) => {
-  //     console.log(event.target.value);
-  // })
 
   searchBtn.addEventListener("click", () => {
     getData(input.value);
   });
-
-  // try {
-  //     searchBtn.addEventListener('click', () => {
-  //         console.log(input.value);
-  //     })
-  // } catch (e) {
-  //     console.error(e.message);
-  // }
-
-  // viewAllBtn.addEventListener("click", () => {
-  //   getData(input.value);
-  // });
 };
 
 search();

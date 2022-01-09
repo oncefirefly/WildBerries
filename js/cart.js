@@ -7,8 +7,6 @@ const cart = () => {
   const cartTableTotal = document.querySelector(".card-table__total");
   const modalForm = document.querySelector(".modal-form");
 
-  console.log(cartTableTotal);
-
   const deleteCartItem = (id) => {
     const cart = JSON.parse(localStorage.getItem("cart"));
     const newCart = cart.filter((good) => {
@@ -55,9 +53,6 @@ const cart = () => {
       ? JSON.parse(localStorage.getItem("cart"))
       : [];
 
-    // console.log(clickedGood);
-    // console.log(cart.some((good) => good.id === clickedGood.id));
-
     if (cart.some((good) => good.id === clickedGood.id)) {
       console.log("увеличить число");
       cart.map((good) => {
@@ -95,12 +90,10 @@ const cart = () => {
 					<td><button class="cart-btn-delete"">x</button></td>
       `;
 
-      totalPrice += (+good.price * +good.count);
+      totalPrice += +good.price * +good.count;
       cartTable.append(trGoods);
 
       trGoods.addEventListener("click", (event) => {
-        // console.log(event.target);
-
         if (event.target.classList.contains("cart-btn-minus")) {
           minusCartItem(good.id);
         } else if (event.target.classList.contains("cart-btn-plus")) {
@@ -173,8 +166,6 @@ const cart = () => {
 
   if (goodsContainer) {
     goodsContainer.addEventListener("click", (event) => {
-      // console.log(event.target);
-
       if (event.target.closest(".add-to-cart")) {
         const buttonToCart = event.target.closest(".add-to-cart");
         const goodId = buttonToCart.dataset.id;
